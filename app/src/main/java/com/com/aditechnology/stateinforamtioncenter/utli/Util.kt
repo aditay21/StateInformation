@@ -58,10 +58,6 @@ class Util {
                 townNameList.add(TownName("Town O"))
 
                 it.townName = townNameList
-
-
-
-
             }
 
             return response.data
@@ -74,7 +70,7 @@ class Util {
 
 
 
-    fun loadStates() : List<State>? {
+    fun loadStates() : List<State> {
         val json = loadJsonFromAssets( "states_data.json")
          return parseJson(json)
         // Use the parsed data

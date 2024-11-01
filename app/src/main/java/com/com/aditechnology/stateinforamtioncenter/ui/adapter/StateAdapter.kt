@@ -5,16 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.com.aditechnology.stateinforamtioncenter.R
+import com.com.aditechnology.stateinforamtioncenter.databinding.StateItemBinding
 import com.com.aditechnology.stateinforamtioncenter.model.State
 
 class StateAdapter ( private var states: MutableList<State>,private val listener: OnStateClickListener,) : RecyclerView.Adapter<StateAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.state_item, parent, false)
-        return ViewHolder(view)
+        val binding: StateItemBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.state_item,
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,8 +35,8 @@ class StateAdapter ( private var states: MutableList<State>,private val listener
         return states.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val stateNameTextView: TextView = itemView.findViewById(R.id.state_name_text_view)
+    inner class ViewHolder(private val binding: StateItemBinding) : RecyclerView.ViewHolder(binding.root) {
+       // private val stateNameTextView: TextView = itemView.findViewById(R.id.state_name_text_view)
         init {
             itemView.setOnClickListener {
                 listener.onStateClick(states[adapterPosition])
@@ -37,7 +44,8 @@ class StateAdapter ( private var states: MutableList<State>,private val listener
         }
 
         fun bind(state: State) {
-            stateNameTextView.text = state.state
+            binding.stateNameTextView.text = state.state
+            binding.executePendingBindings()
         }
 
     }
