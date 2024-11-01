@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">StateInformationCenter</string>
+    <string name="enter_search_hint">Enter Search state</string>
+    <string name="open_in_second">Open in Second Screen</string>
+    <string name="empty_state_message">No Data Found</string>
+
+</resources>
