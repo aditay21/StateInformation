@@ -1,8 +1,6 @@
-Here's a sample README file for your Android project:
+[StateInformation POC]
 
-[Client Project Name]
-
-[Client Project Name] is a mobile application designed to provide an intuitive and user-friendly experience.
+[StateInformation] is a mobile application designed to provide an intuitive and user-friendly experience.
 
 Table of Contents
 
