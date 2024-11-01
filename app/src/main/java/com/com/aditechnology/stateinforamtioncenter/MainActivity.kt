@@ -3,7 +3,7 @@ package com.com.aditechnology.stateinforamtioncenter
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
                 // Handle text change
                 val searchText = editTextSearch.text.toString()
                 // Perform action after text change
-                Log.e("TAG",""+searchText)
                 viewModel.filterStateList(searchText)
 
             }
@@ -51,8 +50,9 @@ class MainActivity : AppCompatActivity() {
             findViewById<View>(R.id.state_filter_container).visibility = View.GONE
             val navHostFragment =
                 supportFragmentManager.findFragmentById(R.id.state_detail_container) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.stateDetailScreenFragment)
+           navHostFragment.navController.also {
+                it.navigate(R.id.stateDetailScreenFragment)
+            }
 
 
         }

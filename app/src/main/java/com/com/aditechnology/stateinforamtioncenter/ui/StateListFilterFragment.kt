@@ -16,7 +16,7 @@ import com.com.aditechnology.stateinforamtioncenter.viewmodel.SharedStateViewMod
 
 class StateListFilterFragment  : Fragment() {
 
-    // Initialize StateApiImpl
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var stateAdapter: StateAdapter
     private val viewModel: SharedStateViewModel by activityViewModels()
@@ -33,7 +33,6 @@ class StateListFilterFragment  : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         recyclerView = view.findViewById(R.id.recycler_view)
         stateAdapter = StateAdapter(mutableListOf(),object : StateAdapter.OnStateClickListener {
             override fun onStateClick(state: State) {
@@ -46,9 +45,7 @@ class StateListFilterFragment  : Fragment() {
         recyclerView.adapter = stateAdapter
         recyclerView.layoutManager = LinearLayoutManager(context) // Add layout manager
 
-
-
-     // Observe states and update adapter
+        // Observe states and update adapter
         viewModel.filteredStates.observe(viewLifecycleOwner) { states ->
             if (states!=null) {
                 stateAdapter.submitList(states.toMutableList())

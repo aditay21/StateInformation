@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.com.aditechnology.stateinforamtioncenter.R
 import com.com.aditechnology.stateinforamtioncenter.model.State
-import com.com.aditechnology.stateinforamtioncenter.ui.adapter.StateAdapter
 import com.com.aditechnology.stateinforamtioncenter.ui.adapter.StateDetailsAdapter
 import com.com.aditechnology.stateinforamtioncenter.viewmodel.SharedStateViewModel
 

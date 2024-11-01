@@ -110,7 +110,6 @@ class StateDetailsAdapter (
                       stateItem: State?) {
         recyclerViewItems.clear()
         recyclerViewItems.addAll(item)
-
         headerItem = stateItem
         notifyDataSetChanged()
     }
