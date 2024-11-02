@@ -54,23 +54,17 @@ class MainActivity : AppCompatActivity() {
         val searchButton: Button = findViewById(R.id.button_search)
         searchButton.setOnClickListener {
             setViewsVisibility(false)
-            val navHostFragment =
-                supportFragmentManager.findFragmentById(R.id.state_detail_container) as NavHostFragment
-           navHostFragment.navController.also {
-                it.navigate(R.id.stateDetailScreenFragment)
-            }
-
-
         }
 
         backPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Your custom logic here
-                if (!shouldHandleBackPress()) {
+                if ( binding.stateListContainer.visibility == View.GONE) {
+                    setViewsVisibility(true)
                     // Handle the back press event
                     // Allow the default back press behavior
-                    isEnabled = false // Disable the callback to allow the default behavior
-                    onBackPressedDispatcher.onBackPressed()
+                }else{
+                    finish()
                 }
             }
         }
@@ -85,22 +79,6 @@ class MainActivity : AppCompatActivity() {
         binding.stateFilterContainer.visibility = visibility
         binding.editTextSearch.visibility = visibility
         binding.buttonSearch.visibility = visibility
-    }
-
-    // Method to determine whether to handle back press
-    private fun shouldHandleBackPress(): Boolean {
-        // Add your custom logic to determine if the back press should be handled
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.state_detail_container) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        // Check if we're currently on stateDetailScreenFragment
-        if (navController.currentDestination?.id == R.id.stateDetailScreenFragment) {
-            // Restore visibility of state_list_container and state_filter_container
-            setViewsVisibility(true)
-
-
-        }
-        return true;
     }
     override fun onDestroy() {
         super.onDestroy()
